@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohamed Sinan PV — Digital Marketing Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --ink: #1A1814;
+    --ink-soft: #4A4740;
+    --ink-muted: #8A8780;
+    --accent: #C8521A;
+    --accent-light: #F5EDE6;
+    --accent-mid: #E8936A;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --green-light: #EAF3DE;
+    --green: #3B6D11;
+    --border: rgba(26,24,20,0.1);
+    --border-soft: rgba(26,24,20,0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(249,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .2s;
+    letter-spacing: .01em;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 999px;
+    padding: 5px 14px;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: .5rem;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: .5rem;
+    letter-spacing: .01em;
+  }
+
+  .hero-loc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 2rem;
+    font-style: italic;
+    border-left: 2px solid var(--accent-mid);
+    padding-left: 1rem;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .18s;
+    letter-spacing: .01em;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover { border-color: var(--ink-soft); background: rgba(26,24,20,.04); }
+
+  /* AVATAR */
+  .avatar-box {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 3px solid var(--accent-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1rem;
+  }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2rem;
+  }
+
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 0 2rem;
+    border-right: 0.5px solid rgba(249,246,241,.15);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-mid);
+    line-height: 1;
+    margin-bottom: .25rem;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(249,246,241,.55);
+    font-weight: 300;
+    letter-spacing: .03em;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    border-bottom: 0.5px solid var(--border-soft);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .sec-label {
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .exp-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .exp-card:hover {
+    border-color: rgba(200,82,26,.3);
+    box-shadow: 0 2px 12px rgba(200,82,26,.06);
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: .6rem;
+  }
+
+  .exp-role {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .exp-company {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+
+  .exp-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .pill-meta { background: #FAECE7; color: #993C1D; }
+  .pill-social { background: var(--blue-light); color: var(--blue); }
+  .pill-seo { background: var(--green-light); color: var(--green); }
+  .pill-sales { background: #F1EFE8; color: #5F5E5A; }
+
+  .exp-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+
+  .skill-item {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .75rem 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color .15s;
+  }
+
+  .skill-item:hover { border-color: var(--accent-mid); color: var(--ink); }
+
+  .skill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+    flex-shrink: 0;
+  }
+
+  /* CERTS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .cert-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color .2s;
+  }
+
+  .cert-card:hover { border-color: rgba(200,82,26,.3); }
+
+  .cert-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 17px;
+    color: var(--accent);
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+
+  /* LANGUAGES */
+  .lang-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .lang-tag {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    background: #fff;
+  }
+
+  .lang-tag.native {
+    background: var(--accent-light);
+    border-color: var(--accent-mid);
+    color: var(--accent);
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-info-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .ci {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .ci-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .ci a { color: var(--accent); text-decoration: none; }
+  .ci a:hover { text-decoration: underline; }
+
+  .form-group { margin-bottom: 12px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+  input, textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--border);
+    background: #fff;
+    color: var(--ink);
+    width: 100%;
+    outline: none;
+    transition: border-color .15s;
+  }
+
+  input:focus, textarea:focus { border-color: var(--accent-mid); }
+
+  textarea { min-height: 100px; resize: vertical; }
+
+  .submit-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background .2s;
+    margin-top: 4px;
+  }
+
+  .submit-btn:hover { background: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(249,246,241,.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    letter-spacing: .03em;
+  }
+
+  footer span { color: var(--accent-mid); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp .5s ease both;
+  }
+
+  .hero-content > *:nth-child(1) { animation-delay: .05s; }
+  .hero-content > *:nth-child(2) { animation-delay: .12s; }
+  .hero-content > *:nth-child(3) { animation-delay: .18s; }
+  .hero-content > *:nth-child(4) { animation-delay: .24s; }
+  .hero-content > *:nth-child(5) { animation-delay: .3s; }
+  .hero-content > *:nth-child(6) { animation-delay: .36s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .hero { grid-template-columns: 1fr; }
+    .avatar-box { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .stats-inner { gap: 1.5rem; justify-content: center; }
+    .stat { border-right: none; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">Sinan <span>PV</span></a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="hero" style="scroll-margin-top:58px;">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Digital marketing professional</div>
+      <h1>Mohamed<br><em>Sinan PV</em></h1>
+      <p class="hero-sub">Social media & Meta ads · SEO/SEM · Content creation</p>
+      <p class="hero-loc">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Malappuram, Kerala &nbsp;·&nbsp; +91 9567465906
+      </p>
+      <p class="hero-bio">Some people scroll social media. I study it. Three years turning strategy into scroll-stopping content and paid campaigns that actually convert — for brands across Kerala.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Hire me</a>
+        <a href="#experience" class="btn btn-outline">See my work</a>
+      </div>
+    </div>
+    <div class="avatar-box">MS</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Years experience</div></div>
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Companies worked with</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Certifications</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Languages spoken</div></div>
+  </div>
+</div>
+
+<section id="experience" style="scroll-margin-top:58px;">
+  <div class="sec-label">Career history</div>
+  <h2>Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Social media & Meta ads handler</div>
+          <div class="exp-company">Career Bench, Edappal</div>
+        </div>
+        <span class="exp-pill pill-meta">Meta Ads</span>
+      </div>
+      <p class="exp-desc">Developed, implemented, and managed paid ad campaigns on Facebook and Instagram to drive brand awareness, engagement, and conversions. Conducted A/B testing to optimise ad creatives, audience targeting, and bidding strategies. Created and scheduled engaging content using Meta Business Suite and Canva. Collaborated with design and content teams to ensure consistency across platforms.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Social media manager</div>
+          <div class="exp-company">Assentia Marketing, Calicut</div>
+        </div>
+        <span class="exp-pill pill-social">Social media</span>
+      </div>
+      <p class="exp-desc">Managed brand accounts on Instagram, Facebook, and LinkedIn. Created and scheduled engaging content aligned with brand tone and marketing goals. Monitored analytics to measure performance, identify trends, and continuously improve content strategy.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Digital marketing executive</div>
+          <div class="exp-company">PVK Enterprise, Maranchery</div>
+        </div>
+        <span class="exp-pill pill-seo">SEO / SEM</span>
+      </div>
+      <p class="exp-desc">Planned and executed SEO and SEM strategies. Designed and scheduled content for social media platforms. Managed the company website end-to-end.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Digital marketing trainee</div>
+          <div class="exp-company">ISTP Digital, Kochi</div>
+        </div>
+        <span class="exp-pill pill-seo">Training</span>
+      </div>
+      <p class="exp-desc">Executed SEO audits and social media calendar planning. Created and managed paid ads via Google Ads and Meta platforms. Analysed campaign performance and produced weekly reports.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Sales executive</div>
+          <div class="exp-company">Asianet Communications Ltd.</div>
+        </div>
+        <span class="exp-pill pill-sales">Sales</span>
+      </div>
+      <p class="exp-desc">Promoted cable TV and broadband services and acquired new customers. Achieved monthly sales targets and coordinated with internal teams to ensure a high level of customer satisfaction and timely service support.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" style="scroll-margin-top:58px;">
+  <div class="sec-label">Capabilities</div>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><span class="skill-dot"></span>Meta Ads (Facebook & Instagram)</div>
+    <div class="skill-item"><span class="skill-dot"></span>SEO & SEM</div>
+    <div class="skill-item"><span class="skill-dot"></span>Google Ads</div>
+    <div class="skill-item"><span class="skill-dot"></span>Google Analytics & Reporting</div>
+    <div class="skill-item"><span class="skill-dot"></span>Social media management</div>
+    <div class="skill-item"><span class="skill-dot"></span>Content planning & calendars</div>
+    <div class="skill-item"><span class="skill-dot"></span>Email marketing</div>
+    <div class="skill-item"><span class="skill-dot"></span>Canva & creative design</div>
+    <div class="skill-item"><span class="skill-dot"></span>WordPress</div>
+    <div class="skill-item"><span class="skill-dot"></span>CRM tools (basic)</div>
+    <div class="skill-item"><span class="skill-dot"></span>A/B testing</div>
+    <div class="skill-item"><span class="skill-dot"></span>Content creation</div>
+  </div>
+</section>
+
+<section id="certifications" style="scroll-margin-top:58px;">
+  <div class="sec-label">Education & credentials</div>
+  <h2>Certifications</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div><div class="cert-name">Advanced diploma in digital marketing</div><div class="cert-issuer">ISTP Digital, Kochi</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔍</div>
+      <div><div class="cert-name">SEO certificate</div><div class="cert-issuer">Digital marketing</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📱</div>
+      <div><div class="cert-name">Social media marketing</div><div class="cert-issuer">Certified</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📧</div>
+      <div><div class="cert-name">Email marketing</div><div class="cert-issuer">Certified</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔗</div>
+      <div><div class="cert-name">Affiliate marketing</div><div class="cert-issuer">Certified</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎯</div>
+      <div><div class="cert-name">Inbound marketing</div><div class="cert-issuer">Certified</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:2.5rem;">
+    <div class="sec-label" style="margin-bottom:.75rem;">Languages</div>
+    <div class="lang-row">
+      <span class="lang-tag native">Malayalam — native</span>
+      <span class="lang-tag">English — professional</span>
+      <span class="lang-tag">Hindi — conversational</span>
+      <span class="lang-tag">Tamil — conversational</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="scroll-margin-top:58px;">
+  <div class="sec-label">Let's work together</div>
+  <h2>Get in touch</h2>
+  <div class="contact-wrap">
+    <div class="contact-info-list">
+      <div class="ci">
+        <div class="ci-icon">✉</div>
+        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Email</div><a href="mailto:sinansinu2616@gmail.com">sinansinu2616@gmail.com</a></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📞</div>
+        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Phone</div>+91 9567465906</div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📍</div>
+        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Location</div>Malappuram, Kerala, India</div>
+      </div>
+      <div style="margin-top:1rem;padding:1rem;background:var(--accent-light);border-radius:var(--radius-sm);border-left:3px solid var(--accent-mid);">
+        <p style="font-size:13px;color:var(--ink-soft);line-height:1.65;">Available for freelance projects, full-time roles, and consulting. I typically respond within 24 hours.</p>
+      </div>
+    </div>
+    <form onsubmit="return false;">
+      <div class="form-row">
+        <input type="text" placeholder="Your name" />
+        <input type="email" placeholder="Email address" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Subject or project brief" />
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Tell me about your business and what you need help with..."></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Mohamed Sinan PV</span> · Digital Marketing Professional · Malappuram, Kerala</p>
+  <p style="margin-top:.4rem;">sinansinu2616@gmail.com &nbsp;·&nbsp; +91 9567465906</p>
+</footer>
+
+</body>
+</html>
