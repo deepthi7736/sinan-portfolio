@@ -6,62 +6,93 @@
 <title>Mohamed Sinan PV — Digital Marketing Professional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --cream: #F9F6F1;
-    --ink: #1A1814;
-    --ink-soft: #4A4740;
-    --ink-muted: #8A8780;
-    --accent: #C8521A;
-    --accent-light: #F5EDE6;
-    --accent-mid: #E8936A;
-    --blue: #185FA5;
-    --blue-light: #E6F1FB;
-    --green-light: #EAF3DE;
-    --green: #3B6D11;
-    --border: rgba(26,24,20,0.1);
-    --border-soft: rgba(26,24,20,0.06);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --ink: #0F1115;
+    --ink-soft: #4A4E58;
+    --ink-muted: #868B96;
+    --paper: #FBFAF7;
+    --paper-dim: #F2F0EA;
+    --line: rgba(15,17,21,0.12);
+    --line-soft: rgba(15,17,21,0.07);
+    --cobalt: #2647E8;
+    --cobalt-dim: #E9EDFD;
+    --signal: #FF4B2E;
+    --signal-dim: #FFE9E4;
+    --white: #FFFFFF;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.65;
     font-size: 16px;
+    overflow-x: hidden;
   }
 
-  /* NAV */
-  nav {
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .serif {
+    font-family: 'Fraunces', serif;
+  }
+
+  a { color: inherit; }
+
+  /* MASTHEAD */
+  header.masthead {
+    background: var(--ink);
+    color: var(--paper);
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(249,246,241,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
+    z-index: 200;
+  }
+
+  .masthead-top {
+    max-width: 1080px;
+    margin: 0 auto;
     padding: 0 2rem;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 58px;
+    transition: height .25s ease;
   }
 
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
+  header.masthead.scrolled .masthead-top { height: 46px; }
+
+  .logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .02em;
     text-decoration: none;
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .nav-logo span { color: var(--accent); }
+  .logo .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--signal);
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(255,75,46,.6);
+    animation: pulseDot 2.2s ease-in-out infinite;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,75,46,.55); }
+    50% { box-shadow: 0 0 0 6px rgba(255,75,46,0); }
+  }
 
   .nav-links {
     display: flex;
@@ -70,631 +101,963 @@
   }
 
   .nav-links a {
-    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
     font-weight: 500;
-    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: rgba(251,250,247,.65);
     text-decoration: none;
     transition: color .2s;
-    letter-spacing: .01em;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--paper); }
 
-  /* HERO */
-  .hero {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: start;
+  /* TICKER */
+  .ticker-strip {
+    background: #181B22;
+    border-top: 1px solid rgba(251,250,247,.08);
+    overflow: hidden;
+    white-space: nowrap;
+    height: 30px;
+    display: flex;
+    align-items: center;
   }
 
-  .hero-tag {
+  .ticker-track {
+    display: inline-flex;
+    animation: tickerScroll 26s linear infinite;
+    will-change: transform;
+  }
+
+  .ticker-track span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: rgba(251,250,247,.5);
+    padding: 0 1.2rem;
+    text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 1.2rem;
+  }
+
+  .ticker-track span::after { content: '/'; color: var(--signal); }
+
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* HERO */
+  .hero-wrap {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 4.5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    letter-spacing: .14em;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    font-weight: 500;
-    color: var(--accent);
-    background: var(--accent-light);
-    border-radius: 999px;
-    padding: 5px 14px;
-    margin-bottom: 1.2rem;
+    color: var(--signal);
+    border: 1px solid rgba(255,75,46,.35);
+    background: rgba(255,75,46,.08);
+    border-radius: 4px;
+    padding: 5px 12px;
+    margin-bottom: 1.5rem;
   }
 
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
+  h1.name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(40px, 5.6vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin-bottom: .9rem;
   }
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 6vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
-    margin-bottom: .5rem;
-    color: var(--ink);
-  }
-
-  h1 em {
+  h1.name em {
     font-style: italic;
-    color: var(--accent);
+    font-weight: 500;
+    color: rgba(251,250,247,.55);
   }
 
-  .hero-sub {
-    font-size: 15px;
-    color: var(--ink-muted);
-    font-weight: 300;
-    margin-bottom: .5rem;
-    letter-spacing: .01em;
-  }
-
-  .hero-loc {
-    font-size: 13px;
-    color: var(--ink-muted);
+  .role-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(251,250,247,.55);
+    margin-bottom: 1.6rem;
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 1.75rem;
-  }
-
-  .hero-bio {
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--ink-soft);
-    max-width: 520px;
-    margin-bottom: 2rem;
-    font-style: italic;
-    border-left: 2px solid var(--accent-mid);
-    padding-left: 1rem;
-  }
-
-  .cta-row {
-    display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
+  .role-line .sep { color: var(--signal); }
+
+  .hero-bio {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(251,250,247,.78);
+    max-width: 480px;
+    margin-bottom: 2.2rem;
+  }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
   .btn {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 10px 24px;
-    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 3px;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    transition: all .18s;
-    letter-spacing: .01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
 
   .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
-    border: 1.5px solid var(--ink);
+    background: var(--cobalt);
+    color: var(--white);
+    border: 1px solid var(--cobalt);
   }
 
-  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(38,71,232,.35);
+  }
 
   .btn-outline {
     background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--border);
+    color: var(--paper);
+    border: 1px solid rgba(251,250,247,.25);
   }
 
-  .btn-outline:hover { border-color: var(--ink-soft); background: rgba(26,24,20,.04); }
-
-  /* AVATAR */
-  .avatar-box {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: var(--accent-light);
-    border: 3px solid var(--accent-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--accent);
-    flex-shrink: 0;
-    margin-top: 1rem;
+  .btn-outline:hover {
+    border-color: rgba(251,250,247,.6);
+    transform: translateY(-2px);
   }
 
-  /* STATS */
-  .stats-bar {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 2rem;
+  /* PORTRAIT */
+  .portrait-box {
+    position: relative;
+    animation: fadeUp .7s ease .15s both;
   }
 
-  .stats-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  .portrait-frame {
+    position: relative;
+    border: 1px solid rgba(251,250,247,.18);
+    padding: 10px;
+    border-radius: 4px;
   }
 
-  .stat {
-    text-align: center;
-    padding: 0 2rem;
-    border-right: 0.5px solid rgba(249,246,241,.15);
+  .portrait-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    filter: grayscale(1) contrast(1.05);
   }
 
-  .stat:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--accent-mid);
-    line-height: 1;
-    margin-bottom: .25rem;
+  .portrait-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--signal);
+    border-style: solid;
+    border-width: 0;
   }
 
-  .stat-label {
-    font-size: 12px;
-    color: rgba(249,246,241,.55);
-    font-weight: 300;
-    letter-spacing: .03em;
-  }
+  .portrait-corner.tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+  .portrait-corner.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
 
-  /* SECTIONS */
-  section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    border-bottom: 0.5px solid var(--border-soft);
-  }
-
-  section:last-of-type { border-bottom: none; }
-
-  .sec-label {
-    font-size: 11px;
-    letter-spacing: .14em;
+  .portrait-tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: .75rem;
+    color: rgba(251,250,247,.85);
+    background: rgba(15,17,21,.55);
+    backdrop-filter: blur(4px);
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(251,250,247,.15);
   }
 
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--ink);
-  }
-
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 14px; }
-
-  .exp-card {
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.4rem 1.6rem;
-    transition: border-color .2s, box-shadow .2s;
-  }
-
-  .exp-card:hover {
-    border-color: rgba(200,82,26,.3);
-    box-shadow: 0 2px 12px rgba(200,82,26,.06);
-  }
-
-  .exp-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: .6rem;
-  }
-
-  .exp-role {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .exp-company {
-    font-size: 13px;
-    color: var(--ink-muted);
-    margin-top: 3px;
-  }
-
-  .exp-pill {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .pill-meta { background: #FAECE7; color: #993C1D; }
-  .pill-social { background: var(--blue-light); color: var(--blue); }
-  .pill-seo { background: var(--green-light); color: var(--green); }
-  .pill-sales { background: #F1EFE8; color: #5F5E5A; }
-
-  .exp-desc {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.65;
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 10px;
-  }
-
-  .skill-item {
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: .75rem 1rem;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: border-color .15s;
-  }
-
-  .skill-item:hover { border-color: var(--accent-mid); color: var(--ink); }
-
-  .skill-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent-mid);
-    flex-shrink: 0;
-  }
-
-  /* CERTS */
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-  }
-
-  .cert-card {
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.1rem 1.2rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    transition: border-color .2s;
-  }
-
-  .cert-card:hover { border-color: rgba(200,82,26,.3); }
-
-  .cert-icon {
-    width: 36px; height: 36px;
-    border-radius: 9px;
-    background: var(--accent-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 17px;
-    color: var(--accent);
-  }
-
-  .cert-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-
-  .cert-issuer {
-    font-size: 11px;
-    color: var(--ink-muted);
-    margin-top: 3px;
-  }
-
-  /* LANGUAGES */
-  .lang-row { display: flex; flex-wrap: wrap; gap: 10px; }
-
-  .lang-tag {
-    font-size: 13px;
-    font-weight: 500;
-    padding: 6px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--ink-soft);
-    background: #fff;
-  }
-
-  .lang-tag.native {
-    background: var(--accent-light);
-    border-color: var(--accent-mid);
-    color: var(--accent);
-  }
-
-  /* CONTACT */
-  .contact-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .contact-info-list { display: flex; flex-direction: column; gap: 1rem; }
-
-  .ci {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: var(--ink-soft);
-  }
-
-  .ci-icon {
-    width: 36px; height: 36px;
-    border-radius: 9px;
-    background: var(--accent-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .ci a { color: var(--accent); text-decoration: none; }
-  .ci a:hover { text-decoration: underline; }
-
-  .form-group { margin-bottom: 12px; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-
-  input, textarea {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    border: 0.5px solid var(--border);
-    background: #fff;
-    color: var(--ink);
-    width: 100%;
-    outline: none;
-    transition: border-color .15s;
-  }
-
-  input:focus, textarea:focus { border-color: var(--accent-mid); }
-
-  textarea { min-height: 100px; resize: vertical; }
-
-  .submit-btn {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: var(--cream);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    transition: background .2s;
-    margin-top: 4px;
-  }
-
-  .submit-btn:hover { background: var(--accent); }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: rgba(249,246,241,.4);
-    text-align: center;
-    padding: 2rem;
-    font-size: 12px;
-    letter-spacing: .03em;
-  }
-
-  footer span { color: var(--accent-mid); }
-
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-content > * {
-    animation: fadeUp .5s ease both;
+  /* GROWTH CHART STRIP */
+  .trajectory-strip {
+    border-top: 1px solid rgba(251,250,247,.08);
+    padding: 2.2rem 2rem 1.6rem;
   }
 
-  .hero-content > *:nth-child(1) { animation-delay: .05s; }
-  .hero-content > *:nth-child(2) { animation-delay: .12s; }
-  .hero-content > *:nth-child(3) { animation-delay: .18s; }
-  .hero-content > *:nth-child(4) { animation-delay: .24s; }
-  .hero-content > *:nth-child(5) { animation-delay: .3s; }
-  .hero-content > *:nth-child(6) { animation-delay: .36s; }
+  .trajectory-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .trajectory-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(251,250,247,.45);
+    white-space: nowrap;
+  }
+
+  .trajectory-label strong { display: block; color: rgba(251,250,247,.85); font-size: 13px; margin-bottom: 4px; }
+
+  .chart-box { position: relative; }
+
+  .chart-caption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: rgba(251,250,247,.45);
+    text-align: center;
+    margin-top: .3rem;
+  }
+
+  .growth-path {
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+  }
+
+  .chart-trigger.in-view .growth-path {
+    animation: drawLine 1.6s cubic-bezier(.4,0,.2,1) .1s forwards;
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .chart-dot { opacity: 0; transform-origin: center; }
+
+  .chart-trigger.in-view .chart-dot {
+    animation: dotPop .4s ease forwards;
+  }
+
+  .chart-trigger.in-view .chart-dot:nth-of-type(1) { animation-delay: .3s; }
+  .chart-trigger.in-view .chart-dot:nth-of-type(2) { animation-delay: .6s; }
+  .chart-trigger.in-view .chart-dot:nth-of-type(3) { animation-delay: .9s; }
+  .chart-trigger.in-view .chart-dot:nth-of-type(4) { animation-delay: 1.2s; }
+  .chart-trigger.in-view .chart-dot:nth-of-type(5) { animation-delay: 1.5s; }
+
+  @keyframes dotPop {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .chart-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    fill: rgba(251,250,247,.5);
+    letter-spacing: .02em;
+    opacity: 0;
+  }
+
+  .chart-trigger.in-view .chart-label {
+    animation: fadeInLabel .5s ease forwards;
+  }
+
+  .chart-trigger.in-view .chart-label:nth-of-type(1) { animation-delay: .4s; }
+  .chart-trigger.in-view .chart-label:nth-of-type(2) { animation-delay: .7s; }
+  .chart-trigger.in-view .chart-label:nth-of-type(3) { animation-delay: 1s; }
+  .chart-trigger.in-view .chart-label:nth-of-type(4) { animation-delay: 1.3s; }
+  .chart-trigger.in-view .chart-label:nth-of-type(5) { animation-delay: 1.6s; }
+
+  @keyframes fadeInLabel { to { opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .growth-path { animation: none !important; stroke-dashoffset: 0; }
+    .chart-dot, .chart-label { animation: none !important; opacity: 1; }
+  }
+
+  /* STATS TICKER BAR */
+  .stats-bar {
+    background: #14171D;
+    border-top: 1px solid rgba(251,250,247,.08);
+    padding: 1.6rem 2rem;
+  }
+
+  .stats-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .stat { display: flex; align-items: baseline; gap: 10px; }
+
+  .stat-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--signal);
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(251,250,247,.45);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2.8rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.2rem;
+  }
+
+  .sec-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+  }
+
+  .sec-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    margin-top: .3rem;
+  }
+
+  /* CAMPAIGN LOG (experience) */
+  .log-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .log-entry {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 1.4rem;
+    padding-bottom: 2.4rem;
+    position: relative;
+  }
+
+  .log-rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .log-rail::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    bottom: -18px;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .log-entry:last-child .log-rail::before { display: none; }
+
+  .log-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--cobalt);
+    margin-top: 6px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .log-entry.current .log-dot { background: var(--signal); border-color: var(--signal); }
+
+  .log-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.5rem 1.7rem;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+
+  .log-card:hover {
+    border-color: var(--cobalt);
+    transform: translateX(4px);
+    box-shadow: 0 10px 30px rgba(15,17,21,.06);
+  }
+
+  .log-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: .7rem;
+    flex-wrap: wrap;
+  }
+
+  .log-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .log-company {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    letter-spacing: .02em;
+  }
+
+  .log-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+  }
+
+  .tag-meta { background: var(--signal-dim); color: #B8330E; border-color: rgba(255,75,46,.25); }
+  .tag-social { background: var(--cobalt-dim); color: var(--cobalt); border-color: rgba(38,71,232,.25); }
+  .tag-seo { background: #E9F3E4; color: #2F6B1F; border-color: rgba(47,107,31,.2); }
+  .tag-sales { background: #EFEEE9; color: #5F5E57; border-color: var(--line); }
+
+  .log-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 9px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color .18s ease, color .18s ease, transform .18s ease;
+  }
+
+  .skill-chip::before { content: '+'; color: var(--cobalt); font-weight: 700; }
+
+  .skill-chip:hover {
+    border-color: var(--cobalt);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  /* CREDENTIALS INDEX */
+  .cred-list { border-top: 1px solid var(--line); }
+
+  .cred-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left .2s ease, background .2s ease;
+  }
+
+  .cred-row:hover { padding-left: 8px; background: var(--paper-dim); }
+
+  .cred-mark {
+    width: 26px; height: 26px;
+    border: 1px solid var(--cobalt);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--cobalt);
+  }
+
+  .cred-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .cred-issuer {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* LANGUAGES */
+  .lang-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2.5rem; }
+
+  .lang-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: var(--white);
+  }
+
+  .lang-tag.native {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .contact-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3.5rem;
+  }
+
+  .contact-inner .sec-eyebrow { color: var(--signal); }
+
+  .contact-inner h2 { color: var(--paper); margin-bottom: 1.2rem; }
+
+  .contact-intro {
+    font-size: 14.5px;
+    color: rgba(251,250,247,.65);
+    line-height: 1.75;
+    max-width: 340px;
+    margin-bottom: 2rem;
+  }
+
+  .ci-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .ci {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .ci-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: rgba(251,250,247,.4);
+    width: 62px;
+    flex-shrink: 0;
+  }
+
+  .ci a { color: var(--paper); text-decoration: none; border-bottom: 1px solid rgba(251,250,247,.3); }
+  .ci a:hover { border-color: var(--signal); color: var(--signal); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
+
+  .field { margin-bottom: 1.4rem; }
+
+  .field label {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: rgba(251,250,247,.45);
+    margin-bottom: 7px;
+  }
+
+  input, textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    padding: 8px 2px;
+    border: none;
+    border-bottom: 1px solid rgba(251,250,247,.25);
+    background: transparent;
+    color: var(--paper);
+    width: 100%;
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  input::placeholder, textarea::placeholder { color: rgba(251,250,247,.32); }
+
+  input:focus, textarea:focus { border-color: var(--signal); }
+
+  textarea { min-height: 90px; resize: vertical; }
+
+  .submit-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 30px;
+    border-radius: 3px;
+    background: var(--cobalt);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+    margin-top: 6px;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(38,71,232,.35);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0B0D11;
+    color: rgba(251,250,247,.35);
+    text-align: center;
+    padding: 1.6rem 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .03em;
+  }
+
+  footer span { color: var(--signal); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  }
+
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  .reveal-group.in-view > * { animation: fadeUpItem .6s cubic-bezier(.16,1,.3,1) both; }
+  .reveal-group > * { opacity: 0; }
+  .reveal-group.in-view > * { opacity: 1; }
+
+  @keyframes fadeUpItem {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal-group > *:nth-child(1) { animation-delay: .04s; }
+  .reveal-group > *:nth-child(2) { animation-delay: .1s; }
+  .reveal-group > *:nth-child(3) { animation-delay: .16s; }
+  .reveal-group > *:nth-child(4) { animation-delay: .22s; }
+  .reveal-group > *:nth-child(5) { animation-delay: .28s; }
+  .reveal-group > *:nth-child(6) { animation-delay: .34s; }
+  .reveal-group > *:nth-child(7) { animation-delay: .4s; }
+  .reveal-group > *:nth-child(8) { animation-delay: .46s; }
+  .reveal-group > *:nth-child(9) { animation-delay: .52s; }
+  .reveal-group > *:nth-child(10) { animation-delay: .58s; }
+  .reveal-group > *:nth-child(11) { animation-delay: .64s; }
+  .reveal-group > *:nth-child(12) { animation-delay: .7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
 
   /* RESPONSIVE */
-  @media (max-width: 680px) {
-    .hero { grid-template-columns: 1fr; }
-    .avatar-box { display: none; }
-    .contact-wrap { grid-template-columns: 1fr; }
+  @media (max-width: 780px) {
+    .hero { grid-template-columns: 1fr; padding-top: 3rem; }
+    .contact-inner { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .stats-inner { gap: 1.5rem; justify-content: center; }
-    .stat { border-right: none; }
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
-    section { padding: 3rem 1.25rem; }
+    .stats-inner { flex-direction: column; gap: 1rem; }
+    .nav-links { gap: 1.1rem; }
+    .masthead-top { padding: 0 1.25rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .cred-row { grid-template-columns: 26px 1fr; }
+    .cred-issuer { grid-column: 2; text-align: left; margin-top: 2px; }
+    .trajectory-inner { grid-template-columns: 1fr; gap: .8rem; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="#hero">Sinan <span>PV</span></a>
-  <ul class="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<header class="masthead" id="mainNav">
+  <div class="masthead-top">
+    <a class="logo" href="#hero"><span class="dot"></span>SINAN.PV</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Log</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="ticker-strip">
+    <div class="ticker-track">
+      <span>Meta Ads</span><span>SEO / SEM</span><span>Social Strategy</span><span>Content Systems</span><span>Malappuram, Kerala</span><span>Available for projects</span>
+      <span>Meta Ads</span><span>SEO / SEM</span><span>Social Strategy</span><span>Content Systems</span><span>Malappuram, Kerala</span><span>Available for projects</span>
+    </div>
+  </div>
+</header>
 
-<div id="hero" style="scroll-margin-top:58px;">
+<div id="hero" style="scroll-margin-top:86px;"></div>
+<div class="hero-wrap">
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-tag">Digital marketing professional</div>
-      <h1>Mohamed<br><em>Sinan PV</em></h1>
-      <p class="hero-sub">Social media & Meta ads · SEO/SEM · Content creation</p>
-      <p class="hero-loc">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Malappuram, Kerala &nbsp;·&nbsp; +91 9567465906
-      </p>
+    <div>
+      <div class="hero-eyebrow">● Available for projects</div>
+      <h1 class="name">Mohamed<br>Sinan <em>PV</em></h1>
+      <div class="role-line">Social &amp; Meta Ads <span class="sep">/</span> SEO / SEM <span class="sep">/</span> Content</div>
       <p class="hero-bio">Some people scroll social media. I study it. Three years turning strategy into scroll-stopping content and paid campaigns that actually convert — for brands across Kerala.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Hire me</a>
-        <a href="#experience" class="btn btn-outline">See my work</a>
+        <a href="#contact" class="btn btn-primary">Hire me →</a>
+        <a href="#experience" class="btn btn-outline">View the log</a>
       </div>
     </div>
-    <div class="avatar-box">MS</div>
+    <div class="portrait-box">
+      <div class="portrait-frame">
+        <img src="assets/sinan-portrait.jpg" alt="Portrait of Mohamed Sinan PV" />
+        <span class="portrait-corner tl"></span>
+        <span class="portrait-corner br"></span>
+        <span class="portrait-tag">Sinan · Kerala</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="trajectory-strip reveal chart-trigger">
+    <div class="trajectory-inner">
+      <div class="trajectory-label"><strong>Career trajectory</strong>3 years · 5 roles</div>
+      <div class="chart-box">
+        <svg viewBox="0 0 460 130" width="100%" height="auto">
+          <line x1="20" y1="110" x2="440" y2="110" stroke="rgba(251,250,247,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <path class="growth-path" d="M40,95 L140,78 L240,58 L340,36 L430,15" fill="none" stroke="#FF4B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="chart-dot" cx="40" cy="95" r="5" fill="#0F1115" stroke="#FF4B2E" stroke-width="2"/>
+          <circle class="chart-dot" cx="140" cy="78" r="5" fill="#0F1115" stroke="#FF4B2E" stroke-width="2"/>
+          <circle class="chart-dot" cx="240" cy="58" r="5" fill="#0F1115" stroke="#FF4B2E" stroke-width="2"/>
+          <circle class="chart-dot" cx="340" cy="36" r="5" fill="#0F1115" stroke="#FF4B2E" stroke-width="2"/>
+          <circle class="chart-dot" cx="430" cy="15" r="6" fill="#FF4B2E" stroke="#FF4B2E" stroke-width="2"/>
+          <text class="chart-label" x="40" y="112" text-anchor="middle">SALES EXEC.</text>
+          <text class="chart-label" x="140" y="95" text-anchor="middle">TRAINEE</text>
+          <text class="chart-label" x="240" y="75" text-anchor="middle">DM EXEC.</text>
+          <text class="chart-label" x="340" y="53" text-anchor="middle">SOCIAL MGR.</text>
+          <text class="chart-label" x="430" y="32" text-anchor="middle">META ADS</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat"><span class="stat-num" data-count="3" data-suffix="+">0</span><span class="stat-label">Years experience</span></div>
+      <div class="stat"><span class="stat-num" data-count="5" data-suffix="+">0</span><span class="stat-label">Companies worked with</span></div>
+      <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label">Certifications</span></div>
+      <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">Languages spoken</span></div>
+    </div>
   </div>
 </div>
 
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Years experience</div></div>
-    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Companies worked with</div></div>
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Certifications</div></div>
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Languages spoken</div></div>
+<section id="experience" style="scroll-margin-top:86px;">
+  <div class="sec-head reveal">
+    <div><div class="sec-eyebrow">Campaign log</div><h2>Experience</h2></div>
+    <div class="sec-index mono">05 entries</div>
   </div>
-</div>
 
-<section id="experience" style="scroll-margin-top:58px;">
-  <div class="sec-label">Career history</div>
-  <h2>Experience</h2>
-  <div class="exp-list">
+  <div class="log-list reveal-group">
 
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Social media & Meta ads handler</div>
-          <div class="exp-company">Career Bench, Edappal</div>
+    <div class="log-entry current">
+      <div class="log-rail"><div class="log-dot"></div></div>
+      <div class="log-card">
+        <div class="log-header">
+          <div>
+            <div class="log-role">Social media & Meta ads handler</div>
+            <div class="log-company">CAREER BENCH — EDAPPAL &nbsp;·&nbsp; MOST RECENT</div>
+          </div>
+          <span class="log-tag tag-meta">Meta Ads</span>
         </div>
-        <span class="exp-pill pill-meta">Meta Ads</span>
+        <p class="log-desc">Developed, implemented, and managed paid ad campaigns on Facebook and Instagram to drive brand awareness, engagement, and conversions. Conducted A/B testing to optimise ad creatives, audience targeting, and bidding strategies. Created and scheduled engaging content using Meta Business Suite and Canva. Collaborated with design and content teams to ensure consistency across platforms.</p>
       </div>
-      <p class="exp-desc">Developed, implemented, and managed paid ad campaigns on Facebook and Instagram to drive brand awareness, engagement, and conversions. Conducted A/B testing to optimise ad creatives, audience targeting, and bidding strategies. Created and scheduled engaging content using Meta Business Suite and Canva. Collaborated with design and content teams to ensure consistency across platforms.</p>
     </div>
 
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Social media manager</div>
-          <div class="exp-company">Assentia Marketing, Calicut</div>
+    <div class="log-entry">
+      <div class="log-rail"><div class="log-dot"></div></div>
+      <div class="log-card">
+        <div class="log-header">
+          <div>
+            <div class="log-role">Social media manager</div>
+            <div class="log-company">ASSENTIA MARKETING — CALICUT</div>
+          </div>
+          <span class="log-tag tag-social">Social Media</span>
         </div>
-        <span class="exp-pill pill-social">Social media</span>
+        <p class="log-desc">Managed brand accounts on Instagram, Facebook, and LinkedIn. Created and scheduled engaging content aligned with brand tone and marketing goals. Monitored analytics to measure performance, identify trends, and continuously improve content strategy.</p>
       </div>
-      <p class="exp-desc">Managed brand accounts on Instagram, Facebook, and LinkedIn. Created and scheduled engaging content aligned with brand tone and marketing goals. Monitored analytics to measure performance, identify trends, and continuously improve content strategy.</p>
     </div>
 
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Digital marketing executive</div>
-          <div class="exp-company">PVK Enterprise, Maranchery</div>
+    <div class="log-entry">
+      <div class="log-rail"><div class="log-dot"></div></div>
+      <div class="log-card">
+        <div class="log-header">
+          <div>
+            <div class="log-role">Digital marketing executive</div>
+            <div class="log-company">PVK ENTERPRISE — MARANCHERY</div>
+          </div>
+          <span class="log-tag tag-seo">SEO / SEM</span>
         </div>
-        <span class="exp-pill pill-seo">SEO / SEM</span>
+        <p class="log-desc">Planned and executed SEO and SEM strategies. Designed and scheduled content for social media platforms. Managed the company website end-to-end.</p>
       </div>
-      <p class="exp-desc">Planned and executed SEO and SEM strategies. Designed and scheduled content for social media platforms. Managed the company website end-to-end.</p>
     </div>
 
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Digital marketing trainee</div>
-          <div class="exp-company">ISTP Digital, Kochi</div>
+    <div class="log-entry">
+      <div class="log-rail"><div class="log-dot"></div></div>
+      <div class="log-card">
+        <div class="log-header">
+          <div>
+            <div class="log-role">Digital marketing trainee</div>
+            <div class="log-company">ISTP DIGITAL — KOCHI</div>
+          </div>
+          <span class="log-tag tag-seo">Training</span>
         </div>
-        <span class="exp-pill pill-seo">Training</span>
+        <p class="log-desc">Executed SEO audits and social media calendar planning. Created and managed paid ads via Google Ads and Meta platforms. Analysed campaign performance and produced weekly reports.</p>
       </div>
-      <p class="exp-desc">Executed SEO audits and social media calendar planning. Created and managed paid ads via Google Ads and Meta platforms. Analysed campaign performance and produced weekly reports.</p>
     </div>
 
-    <div class="exp-card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">Sales executive</div>
-          <div class="exp-company">Asianet Communications Ltd.</div>
+    <div class="log-entry">
+      <div class="log-rail"><div class="log-dot"></div></div>
+      <div class="log-card">
+        <div class="log-header">
+          <div>
+            <div class="log-role">Sales executive</div>
+            <div class="log-company">ASIANET COMMUNICATIONS LTD.</div>
+          </div>
+          <span class="log-tag tag-sales">Sales</span>
         </div>
-        <span class="exp-pill pill-sales">Sales</span>
+        <p class="log-desc">Promoted cable TV and broadband services and acquired new customers. Achieved monthly sales targets and coordinated with internal teams to ensure a high level of customer satisfaction and timely service support.</p>
       </div>
-      <p class="exp-desc">Promoted cable TV and broadband services and acquired new customers. Achieved monthly sales targets and coordinated with internal teams to ensure a high level of customer satisfaction and timely service support.</p>
     </div>
 
   </div>
 </section>
 
-<section id="skills" style="scroll-margin-top:58px;">
-  <div class="sec-label">Capabilities</div>
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-item"><span class="skill-dot"></span>Meta Ads (Facebook & Instagram)</div>
-    <div class="skill-item"><span class="skill-dot"></span>SEO & SEM</div>
-    <div class="skill-item"><span class="skill-dot"></span>Google Ads</div>
-    <div class="skill-item"><span class="skill-dot"></span>Google Analytics & Reporting</div>
-    <div class="skill-item"><span class="skill-dot"></span>Social media management</div>
-    <div class="skill-item"><span class="skill-dot"></span>Content planning & calendars</div>
-    <div class="skill-item"><span class="skill-dot"></span>Email marketing</div>
-    <div class="skill-item"><span class="skill-dot"></span>Canva & creative design</div>
-    <div class="skill-item"><span class="skill-dot"></span>WordPress</div>
-    <div class="skill-item"><span class="skill-dot"></span>CRM tools (basic)</div>
-    <div class="skill-item"><span class="skill-dot"></span>A/B testing</div>
-    <div class="skill-item"><span class="skill-dot"></span>Content creation</div>
+<section id="skills" style="scroll-margin-top:86px;">
+  <div class="sec-head reveal">
+    <div><div class="sec-eyebrow">Toolkit</div><h2>Skills</h2></div>
+    <div class="sec-index mono">12 total</div>
+  </div>
+  <div class="skills-grid reveal-group">
+    <div class="skill-chip">Meta Ads (Facebook &amp; Instagram)</div>
+    <div class="skill-chip">SEO &amp; SEM</div>
+    <div class="skill-chip">Google Ads</div>
+    <div class="skill-chip">Google Analytics &amp; Reporting</div>
+    <div class="skill-chip">Social media management</div>
+    <div class="skill-chip">Content planning &amp; calendars</div>
+    <div class="skill-chip">Email marketing</div>
+    <div class="skill-chip">Canva &amp; creative design</div>
+    <div class="skill-chip">WordPress</div>
+    <div class="skill-chip">CRM tools (basic)</div>
+    <div class="skill-chip">A/B testing</div>
+    <div class="skill-chip">Content creation</div>
   </div>
 </section>
 
-<section id="certifications" style="scroll-margin-top:58px;">
-  <div class="sec-label">Education & credentials</div>
-  <h2>Certifications</h2>
-  <div class="cert-grid">
-    <div class="cert-card">
-      <div class="cert-icon">🎓</div>
-      <div><div class="cert-name">Advanced diploma in digital marketing</div><div class="cert-issuer">ISTP Digital, Kochi</div></div>
+<section id="certifications" style="scroll-margin-top:86px;">
+  <div class="sec-head reveal">
+    <div><div class="sec-eyebrow">Education</div><h2>Credentials index</h2></div>
+    <div class="sec-index mono">06 total</div>
+  </div>
+
+  <div class="cred-list reveal-group">
+    <div class="cred-row">
+      <div class="cred-mark">DM</div>
+      <div class="cred-name">Advanced diploma in digital marketing</div>
+      <div class="cred-issuer">ISTP DIGITAL, KOCHI</div>
     </div>
-    <div class="cert-card">
-      <div class="cert-icon">🔍</div>
-      <div><div class="cert-name">SEO certificate</div><div class="cert-issuer">Digital marketing</div></div>
+    <div class="cred-row">
+      <div class="cred-mark">SE</div>
+      <div class="cred-name">SEO certificate</div>
+      <div class="cred-issuer">DIGITAL MARKETING</div>
     </div>
-    <div class="cert-card">
-      <div class="cert-icon">📱</div>
-      <div><div class="cert-name">Social media marketing</div><div class="cert-issuer">Certified</div></div>
+    <div class="cred-row">
+      <div class="cred-mark">SM</div>
+      <div class="cred-name">Social media marketing</div>
+      <div class="cred-issuer">CERTIFIED</div>
     </div>
-    <div class="cert-card">
-      <div class="cert-icon">📧</div>
-      <div><div class="cert-name">Email marketing</div><div class="cert-issuer">Certified</div></div>
+    <div class="cred-row">
+      <div class="cred-mark">EM</div>
+      <div class="cred-name">Email marketing</div>
+      <div class="cred-issuer">CERTIFIED</div>
     </div>
-    <div class="cert-card">
-      <div class="cert-icon">🔗</div>
-      <div><div class="cert-name">Affiliate marketing</div><div class="cert-issuer">Certified</div></div>
+    <div class="cred-row">
+      <div class="cred-mark">AM</div>
+      <div class="cred-name">Affiliate marketing</div>
+      <div class="cred-issuer">CERTIFIED</div>
     </div>
-    <div class="cert-card">
-      <div class="cert-icon">🎯</div>
-      <div><div class="cert-name">Inbound marketing</div><div class="cert-issuer">Certified</div></div>
+    <div class="cred-row">
+      <div class="cred-mark">IM</div>
+      <div class="cred-name">Inbound marketing</div>
+      <div class="cred-issuer">CERTIFIED</div>
     </div>
   </div>
 
-  <div style="margin-top:2.5rem;">
-    <div class="sec-label" style="margin-bottom:.75rem;">Languages</div>
+  <div class="reveal">
+    <div class="sec-eyebrow" style="margin-top:2.5rem;margin-bottom:.9rem;">Languages</div>
     <div class="lang-row">
       <span class="lang-tag native">Malayalam — native</span>
       <span class="lang-tag">English — professional</span>
@@ -704,47 +1067,78 @@
   </div>
 </section>
 
-<section id="contact" style="scroll-margin-top:58px;">
-  <div class="sec-label">Let's work together</div>
-  <h2>Get in touch</h2>
-  <div class="contact-wrap">
-    <div class="contact-info-list">
-      <div class="ci">
-        <div class="ci-icon">✉</div>
-        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Email</div><a href="mailto:sinansinu2616@gmail.com">sinansinu2616@gmail.com</a></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon">📞</div>
-        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Phone</div>+91 9567465906</div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon">📍</div>
-        <div><div style="font-size:11px;color:var(--ink-muted);margin-bottom:2px;">Location</div>Malappuram, Kerala, India</div>
-      </div>
-      <div style="margin-top:1rem;padding:1rem;background:var(--accent-light);border-radius:var(--radius-sm);border-left:3px solid var(--accent-mid);">
-        <p style="font-size:13px;color:var(--ink-soft);line-height:1.65;">Available for freelance projects, full-time roles, and consulting. I typically respond within 24 hours.</p>
+<div id="contact" style="scroll-margin-top:86px;"></div>
+<div class="contact-wrap">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="sec-eyebrow">Let's talk</div>
+      <h2>Start a conversation</h2>
+      <p class="contact-intro">Available for freelance projects, full-time roles, and consulting. I typically respond within 24 hours.</p>
+      <div class="ci-list">
+        <div class="ci"><span class="ci-label">Email</span><a href="mailto:sinansinu2616@gmail.com">sinansinu2616@gmail.com</a></div>
+        <div class="ci"><span class="ci-label">Phone</span><span>+91 9567465906</span></div>
+        <div class="ci"><span class="ci-label">Based</span><span>Malappuram, Kerala, India</span></div>
       </div>
     </div>
-    <form onsubmit="return false;">
+    <form onsubmit="return false;" class="reveal">
       <div class="form-row">
-        <input type="text" placeholder="Your name" />
-        <input type="email" placeholder="Email address" />
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name" /></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="Email address" /></div>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Subject or project brief" />
-      </div>
-      <div class="form-group">
-        <textarea placeholder="Tell me about your business and what you need help with..."></textarea>
-      </div>
+      <div class="field"><label>Subject</label><input type="text" placeholder="Subject or project brief" /></div>
+      <div class="field"><label>Message</label><textarea placeholder="Tell me about your business and what you need help with..."></textarea></div>
       <button class="submit-btn" type="submit">Send message →</button>
     </form>
   </div>
-</section>
+</div>
 
 <footer>
-  <p>© 2026 <span>Mohamed Sinan PV</span> · Digital Marketing Professional · Malappuram, Kerala</p>
-  <p style="margin-top:.4rem;">sinansinu2616@gmail.com &nbsp;·&nbsp; +91 9567465906</p>
+  <p>© 2026 <span>Mohamed Sinan PV</span> — Digital Marketing Professional — Malappuram, Kerala</p>
 </footer>
+
+<script>
+  // Nav shrink on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-group');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Animated stat counters
+  const statNums = document.querySelectorAll('.stat-num');
+  const statsIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      statNums.forEach(el => {
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1100;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      statsIO.disconnect();
+    });
+  }, { threshold: 0.4 });
+  const statsBar = document.querySelector('.stats-bar');
+  if (statsBar) statsIO.observe(statsBar);
+</script>
 
 </body>
 </html>
